@@ -9,14 +9,14 @@ pipeline {
 			values '8', '11'
 		    }
 		}
+	        agent {
+	            docker {
+	                image 'maven:3.8-openjdk-$JAVA_VERSION'
+		        args '-v /root/.m2:/root/.m2'
+	            }
+	        }
 		stages {
 		    stage('Build Java $JAVA_VERSION') {
-		        agent {
-		            docker {
-		                image 'maven:3.8-openjdk-$JAVA_VERSION'
-			        args '-v /root/.m2:/root/.m2'
-		            }
-		        }
 		        steps {
 		            echo "Build with Java ${JAVA_VERSION}"
 		            sh 'mvn --version'
@@ -24,12 +24,6 @@ pipeline {
 		        }
 		    }
 		    stage('Test Java $JAVA_VERSION') {
-			agent {
-			    docker {
-			        image 'maven:3.8-openjdk-$JAVA_VERSION'
-			        args '-v /root/.m2:/root/.m2'
-			    }
-		        }
 		    	steps {
 			    sh 'mvn test'
 			}
