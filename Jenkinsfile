@@ -8,11 +8,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+			    sh 'mvn --version'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
+			    sh 'mvn --version'
                 sh 'mvn test'
             }
             post {
