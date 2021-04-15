@@ -1,7 +1,5 @@
 pipeline {
     agent none
-    stages {
-        stage('Matrix build and test') {
 	    matrix {
 		axes {
 		    axis {
@@ -41,6 +39,4 @@ pipeline {
                     }
 	        }
 	    }
-        }
-    }
 }
