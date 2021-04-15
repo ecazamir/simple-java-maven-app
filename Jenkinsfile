@@ -1,7 +1,5 @@
 pipeline {
     agent none
-    environment {
-    }
     stages {
         stage('Matrix build and test') {
 	    matrix {
