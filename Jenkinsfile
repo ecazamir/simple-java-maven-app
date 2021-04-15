@@ -1,7 +1,7 @@
 pipeline {
     agent none
 	environment {
-        JAVA_VERSION = '8'
+        JAVA_VERSION = '17'
     }
     stages {
         stage('Build') {
