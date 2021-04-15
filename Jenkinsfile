@@ -15,7 +15,6 @@ pipeline {
 				stages {
 					stage('Build') {
 						agent {
-							label '${JAVA_VERSION}'
 							docker {
 								image 'maven:3.8-openjdk-$JAVA_VERSION'
 								args '-v /root/.m2:/root/.m2'
@@ -29,7 +28,6 @@ pipeline {
 					}
 					stage('Test') {
 						agent {
-							label '${JAVA_VERSION}'
 							docker {
 								image 'maven:3.8-openjdk-$JAVA_VERSION'
 								args '-v /root/.m2:/root/.m2'
