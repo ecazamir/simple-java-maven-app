@@ -1,5 +1,7 @@
 pipeline {
     agent none
+    stages {
+        stage('Matrix build and test') {
 	    matrix {
 		axes {
 		    axis {
@@ -8,7 +10,7 @@ pipeline {
 		    }
 		}
 		stages {
-		    stage('Build') {
+			stage('Build Java ${JAVA_VERSION}') {
 		        agent {
 			    docker {
 			        image 'maven:3.8-openjdk-$JAVA_VERSION'
@@ -21,7 +23,7 @@ pipeline {
 			    sh 'mvn -B -DskipTests clean package'
 			}
 		    }
-		    stage('Test') {
+			stage('Test Java ${JAVA_VERSION}') {
 			agent {
 			    docker {
 			        image 'maven:3.8-openjdk-$JAVA_VERSION'
@@ -39,4 +41,6 @@ pipeline {
                     }
 	        }
 	    }
+	}
+    }
 }
