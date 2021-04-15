@@ -16,14 +16,14 @@ pipeline {
 	            }
 	        }
 		stages {
-		    stage('Build Java $JAVA_VERSION') {
+		    stage('Build') {
 		        steps {
 		            echo "Build with Java ${JAVA_VERSION}"
 		            sh 'mvn --version'
 		            sh 'mvn -B -DskipTests clean package'
 		        }
 		    }
-		    stage('Test Java $JAVA_VERSION') {
+		    stage('Test') {
 		    	steps {
 			    sh 'mvn test'
 			}
