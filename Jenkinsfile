@@ -6,7 +6,7 @@ pipeline {
 		axes {
 		    axis {
 		        name 'JAVA_VERSION'
-			values '8', '11'
+			values '8'
 		    }
 		}
 	        agent {
